@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moodic</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('index') }}"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto"> <!-- Added ml-auto for alignment -->
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <span class="navbar-text me-2"> {{ current_user.username }}</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+  <!-- Main Content -->
+  <div class="container mt-4">
+    <div class="headings text-center">
+      <h1>Emotion Based Music Recommender (Moodic)</h1>
+    </div>
+
+    <div>
+    <ul class="example-2">
+      <li class="icon-content">
+        <a
+          href="https://www.spotify.com/"
+          aria-label="Spotify"
+          data-social="spotify"
+        >
+          <div class="filled"></div>
+          <svg version="1.1" viewBox="0 0 100 100">
+            <path
+              d="M50,4C24.7,4,4,24.7,4,50s20.6,46,46,46s46-20.6,46-46S75.4,4,50,4z M71.6,71.5c0,0,0,0.1-0.1,0.1c-0.8,1.2-2,1.8-3.2,1.8  c-0.7,0-1.4-0.2-2-0.6c-10.2-6.3-23.3-7.7-38.8-4.1c-2.1,0.6-4-0.9-4.5-2.7c-0.6-2.3,0.9-4.1,2.7-4.6c17.7-4,32.6-2.3,44.4,5  c0.9,0.4,1.5,1,1.8,1.9C72.2,69.3,72.1,70.5,71.6,71.5z M76.9,59.3L76.9,59.3c-0.8,1.1-1.9,1.9-3.2,2.1c-0.2,0-0.5,0.1-0.7,0.1  c-0.8,0-1.6-0.3-2.3-0.7c-12-7.3-30.1-9.4-43.9-5c-2.5,0.6-5-0.7-5.6-3c-0.6-2.5,0.7-4.9,3-5.5c16.5-5,37.2-2.5,51.4,6.2  c0.8,0.4,1.5,1.3,1.8,2.5C77.9,57,77.6,58.3,76.9,59.3z M83.2,45.6c-1,1.4-2.7,2.1-4.4,2.1c-0.9,0-1.9-0.2-2.7-0.7c0,0,0,0,0,0  c-13.9-8.3-37.8-9.3-51.4-5.1c-2.7,0.8-5.5-0.7-6.4-3.3c-0.8-2.7,0.7-5.6,3.3-6.4c16.2-4.8,43-3.8,59.8,6.2  C83.8,39.6,84.7,42.9,83.2,45.6C83.3,45.5,83.3,45.5,83.2,45.6z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </a>
+        <div class="tooltip">Spotify</div>
+      </li>
+      <li class="icon-content">
+        <a
+          href="https://music.youtube.com/"
+          aria-label="Pinterest"
+          data-social="pinterest"
+        >
+          <div class="filled"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 100 100" viewBox="0 0 100 100" id="youtube-music"><g><path fill="red" d="M50,2.5C23.766,2.5,2.5,23.823,2.5,50.126c2.502,63.175,92.507,63.157,95-0.001
+            C97.5,23.823,76.233,2.5,50,2.5z M50,77.399c-15.036,0-27.27-12.233-27.27-27.27c0.74-18.662,14.654-27.134,27.269-27.134
+            c0.001,0,0.001,0,0.002,0c12.616,0.001,26.531,8.473,27.267,27.073C77.27,65.167,65.036,77.399,50,77.399z"></path><path fill="red" d="M50.002,26.103c-15.946-0.001-23.704,12.486-24.165,24.088C25.838,63.453,36.677,74.292,50,74.292
+            S74.162,63.453,74.162,50.13C73.705,38.591,65.948,26.105,50.002,26.103z"></path><path fill="#f1f1f1" d="M41.055,52.528c-0.001,2.575,0.001,7.867,0,10.46c0,0,21.802-13.417,21.802-13.417L41.055,37.272V52.528z"></path></g></svg>
+        </a>
+        <div class="tooltip">Youtube</div>
+      </li>
+      <li class="icon-content">
+        <a
+          href="https://music.amazon.in/"
+          aria-label="Dribbble"
+          data-social="dribbble"
+        >
+          <div class="filled"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="amazon-music"><path d="M1.57853 5.52271c-.20138-.2441-.5343-.33554-.832105-.22855-.297809.10699-.496425.38939-.496425.70583v5.00001c0 .4142.335788.75.75.75.41422 0 .75-.3358.75-.75v-2.91238l.17147.20784c.14248.1727.35465.27272.57853.27272.22388 0 .43606-.10002.57853-.27272l.17147-.20784v2.91238c0 .4142.33579.75.75.75.41422 0 .75-.3358.75-.75v-5.00001c0-.31644-.19861-.59884-.49642-.70583-.29781-.10699-.63073-.01555-.83211.22855l-.92147 1.11693-.92147-1.11693zM7 5.24999c.41422 0 .75.33579.75.75v4c0 .13811.11193.25001.25.25001h1c.13807 0 .25-.1119.25-.25001v-4c0-.41421.33579-.75.75-.75.4142 0 .75.33579.75.75v4c0 .96651-.7835 1.75001-1.75 1.75001h-1c-.9665 0-1.75-.7835-1.75-1.75001v-4c0-.41421.33579-.75.75-.75zM18 5.24999c.4142 0 .75.33579.75.75v5.00001c0 .4142-.3358.75-.75.75-.4142 0-.75-.3358-.75-.75v-5.00001c0-.41421.3358-.75.75-.75zM14.25 5.24999c-1.1046 0-2 .89543-2 2v.25c0 .9665.7835 1.75 1.75 1.75.1381 0 .25.11193.25.25v.25c0 .27611-.2239.50001-.5.50001h-.75c-.4142 0-.75.3358-.75.75 0 .4142.3358.75.75.75h.75c1.1046 0 2-.8954 2-2.00001v-.25c0-.96649-.7835-1.75-1.75-1.75-.1381 0-.25-.11193-.25-.25v-.25c0-.27614.2239-.5.5-.5h.75c.4142 0 .75-.33578.75-.75 0-.41421-.3358-.75-.75-.75h-.75zM16.7679 13.8373c.0898-.4044.4905-.6593.8948-.5694l4.5 1c.3983.0885.6528.4791.5727.8792l-1 5c-.0812.4062-.4763.6696-.8825.5883-.4062-.0812-.6696-.4763-.5883-.8825l.856-4.28-3.7833-.8408c-.4043-.0898-.6593-.4905-.5694-.8948z"></path><path d="M.456556 15.4831c.285466-.3001.760194-.312 1.06032-.0266 1.6836 1.6013 5.15078 2.7935 9.29392 2.7935 3.294 0 6.1904-.756 8.0876-1.8933.3552-.2129.8159-.0976 1.0289.2577.2129.3552.0976.8159-.2577 1.0289-2.186 1.3104-5.3666 2.1067-8.8588 2.1067-4.34477 0-8.25602-1.2362-10.3277-3.2066-.300137-.2854-.31203-.7602-.026564-1.0603zM22 5.24999c-.9665 0-1.75.78351-1.75 1.75v3c0 .96651.7835 1.75001 1.75 1.75001h1c.4142 0 .75-.3358.75-.75 0-.4142-.3358-.75-.75-.75h-1c-.1381 0-.25-.1119-.25-.25001v-3c0-.13807.1119-.25.25-.25h1c.4142 0 .75-.33578.75-.75 0-.41421-.3358-.75-.75-.75h-1z"></path></svg>
+        </a>
+        <div class="tooltip">Amazon</div>
+      </li>
+      <li class="icon-content">
+        <a
+          href="https://music.apple.com/us/browse"
+          aria-label="Apple Music"
+          data-social="Apple Music"
+        >
+          <div class="filled"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" id="apple-music"><path d="M0.524,20.91c0.65,1.42,1.738,2.353,3.234,2.802c0.42,0.127,0.856,0.187,1.293,0.228C5.606,23.993,6.161,24,6.718,24h11.03c0.525,0,1.048-0.034,1.57-0.1c0.823-0.106,1.597-0.35,2.296-0.81c0.84-0.553,1.472-1.287,1.88-2.208c0.186-0.42,0.293-0.87,0.37-1.324c0.113-0.675,0.138-1.358,0.137-2.04c-0.002-3.8,0-7.596-0.003-11.394h-0.003c0-0.738-0.065-1.47-0.24-2.19c-0.317-1.31-1.062-2.31-2.18-3.043C21,0.516,20.37,0.284,19.697,0.163c-0.517-0.093-1.038-0.135-1.564-0.15C18.093,0.01,18.05,0.003,18.009,0H5.986C5.834,0.01,5.683,0.017,5.531,0.026c-0.747,0.043-1.49,0.123-2.193,0.401c-1.336,0.53-2.3,1.452-2.865,2.78C0.281,3.655,0.181,4.132,0.11,4.615C0.054,5.007,0.022,5.4,0.01,5.795c0,0.032-0.007,0.062-0.01,0.093v12.224c0.01,0.14,0.017,0.283,0.027,0.424C0.077,19.352,0.181,20.161,0.524,20.91z M5.929,16.373c0.357-0.15,0.73-0.232,1.108-0.31c0.287-0.06,0.575-0.116,0.86-0.177c0.383-0.083,0.583-0.323,0.6-0.714v-0.15c0-2.96,0-5.922,0.002-8.883c0-0.123,0.013-0.25,0.042-0.37c0.07-0.285,0.273-0.448,0.546-0.518c0.255-0.066,0.515-0.112,0.774-0.165c0.733-0.15,1.466-0.296,2.2-0.444l2.27-0.46c0.67-0.134,1.34-0.27,2.01-0.403c0.22-0.043,0.443-0.088,0.664-0.106c0.31-0.025,0.523,0.17,0.554,0.482c0.008,0.073,0.012,0.148,0.012,0.223c0.002,1.91,0.002,3.822,0,5.732l0.001,0.003v5.713c0,0.417-0.058,0.827-0.244,1.206c-0.29,0.59-0.76,0.962-1.388,1.14c-0.35,0.1-0.706,0.157-1.07,0.173c-0.95,0.045-1.773-0.6-1.943-1.536c-0.142-0.773,0.227-1.624,1.038-2.022c0.323-0.16,0.67-0.25,1.018-0.324c0.378-0.082,0.758-0.153,1.134-0.24c0.274-0.063,0.457-0.23,0.51-0.516c0.014-0.063,0.02-0.13,0.02-0.193c0-1.815,0-3.63-0.002-5.443c0-0.062-0.01-0.125-0.026-0.185c-0.04-0.15-0.15-0.243-0.304-0.234c-0.16,0.01-0.318,0.035-0.475,0.066c-0.76,0.15-1.52,0.303-2.28,0.456l-3.7,0.748c-0.016,0.003-0.032,0.01-0.048,0.013c-0.277,0.077-0.377,0.203-0.39,0.49c-0.002,0.042,0,0.086,0,0.13c-0.002,2.602,0,5.204-0.003,7.806c0,0.42-0.047,0.836-0.215,1.227c-0.278,0.64-0.77,1.04-1.434,1.233c-0.35,0.1-0.71,0.16-1.075,0.172c-0.96,0.036-1.755-0.6-1.92-1.544C4.635,17.636,5.005,16.763,5.929,16.373z"></path></svg>
+        </a>
+        <div class="tooltip">Apple</div>
+      </li>
+    </ul>
+    
+  </div>
+
+
+    <!-- Emotion Detector and Music Recommendations Sections -->
+    <div id="body" class="row mt-4">
+      <div class="emotion-detector col-md-6">
+        <h2>Emotion Detector</h2>
+        <div>
+          <img id="bg" src="{{ url_for('video_feed') }}" alt="Emotion Detector Image" class="img-fluid" />
+        </div>
+      </div>
+
+      <div class="song-recommendations col-md-6">
+        <h2>Music Recommendations</h2>
+        <div id="ResultArea"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script type="text/javascript">
+    // Constantly Update Table
+    setInterval(function () {
+      $.getJSON('/t', function (data) {
+        CreateHtmlTable(data);
+        console.log(data, "DATA");
+      });
+      return false;
+    }, 100);
+
+    function CreateHtmlTable(data) {
+      // Clear result div
+      $("#ResultArea").empty(); // Use empty to clear the div
+
+      // Create table if not existing
+      var table = $("#DynamicTable");
+      if (table.length === 0) {
+        table = $("<table class='table table-striped table-light table-bordered table-hover table-sm table-responsive' id='DynamicTable'></table>").appendTo("#ResultArea");
+        var rowHeader = $("<tr></tr>").appendTo(table);
+        $("<th></th>").text("Name").appendTo(rowHeader);
+        $("<th></th>").text("Album").appendTo(rowHeader);
+        $("<th></th>").text("Artist").appendTo(rowHeader);
+      }
+
+      // Remove existing rows (if any)
+      table.find("tr:gt(0)").remove();
+
+      // Populate table with new data
+      $.each(data, function (i, value) {
+        var row = $("<tr></tr>").appendTo(table);
+        $("<td></td>").text(value.Name).appendTo(row);
+        $("<td></td>").text(value.Album).appendTo(row);
+        $("<td></td>").text(value.Artist).appendTo(row);
+      });
+    }
+  </script>
+
+</body>
+
+</html>

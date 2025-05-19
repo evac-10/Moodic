@@ -1,0 +1,224 @@
+/* Importing font */ 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body styling */
+body {
+  background: linear-gradient(to right, #2C3E50, #4B4B4B);
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar styling */
+.navbar {
+  position: fixed;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #1A2980, #26D0CE);
+  border-radius: 50px;
+  padding: 9px 20px;
+  z-index: 100;
+  width: auto;  /* Allow width to shrink-wrap content */
+  gap: 20px;
+}
+
+/* Remove empty brand spacing */
+.navbar-brand {
+  display: none; /* since empty */
+}
+
+/* Navbar left and right containers */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* space between items */
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+/* Remove equal flex grow */
+.navbar-nav.me-auto {
+  justify-content: flex-start;
+  flex: 0; /* Change from 1 to 0 to shrink-wrap content */
+}
+
+.navbar-nav.ml-auto {
+  justify-content: flex-end;
+  flex: 0; /* Change from 1 to 0 to shrink-wrap content */
+  gap: 15px;
+}
+
+/* Username styling */
+.navbar-text {
+  color: #a0c8d8; /* subtle lighter color */
+  white-space: nowrap; /* prevent wrapping */
+  padding: 0 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Nav links styling */
+.nav-link {
+  color: #ffffff !important; /* bright white */
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #d1f0f0 !important; /* subtle bright hover */
+  text-decoration: none;
+}
+
+/* Navbar toggle icon color (hamburger menu) */
+.navbar-toggler-icon {
+  background-color: #ffffff;
+}
+
+/* Headings styling */
+.headings h1 {
+  margin-top: 100px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  padding: 10px;
+  font-weight: 900;
+  color: #333;
+  text-align: center;
+  background-color: #e8eaf6;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Emotion detector and song recommendations sections */
+.emotion-detector, .song-recommendations {
+  width: 50%;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.emotion-detector h2, .song-recommendations h2 {
+  font-size: 30px;
+  font-weight: 900;
+  color: #333;
+  background-color: #e8eaf6;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Social icons section */
+.example-2 {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.example-2 .icon-content {
+  position: relative;
+}
+
+.example-2 .icon-content a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;  /* Default background color */
+  color: #4d4d4d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;  /* Prevents the color fill from expanding beyond the icon */
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.example-2 .icon-content a:hover {
+  color: #fff; /* Changes the icon color on hover */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow on hover */
+  transform: scale(1.1); /* Slightly enlarges the icon on hover */
+}
+
+/* Ensure the icon stays on top of the background */
+.example-2 .icon-content a svg {
+  z-index: 1; /* Keep the SVG icon on top of the background */
+}
+
+/* Icon-Specific Hover Colors (Icon color on hover) */
+.example-2 .icon-content a[data-social="spotify"]:hover {
+  color: #1db954; /* Spotify color on hover */
+}
+
+.example-2 .icon-content a[data-social="youtube"]:hover {
+  color: #ff0000; /* YouTube color on hover */
+}
+
+.example-2 .icon-content a[data-social="amazon"]:hover {
+  color: #ff9900; /* Amazon color on hover */
+  box-shadow: 0 0 8px rgba(255, 153, 0, 0.5); /* Adds shadow specific to Amazon */
+  transform: scale(1.1); /* Slightly enlarges the Amazon icon on hover */
+}
+
+.example-2 .icon-content a[data-social="apple-music"]:hover {
+  color: #4a5568; /* Apple Music color on hover */
+  box-shadow: 0 0 8px rgba(74, 85, 104, 0.5); /* Adds shadow specific to Apple Music */
+  transform: scale(1.1); /* Slightly enlarges the Apple Music icon on hover */
+}
+
+/* Music table styling */
+#ResultArea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 15px;
+  text-align: left;
+}
+
+table#DynamicTable {
+  width: 100%;
+  table-layout: fixed;
+  cursor: pointer;
+}
+
+table#DynamicTable th, table#DynamicTable td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Result area scroll */
+#ResultArea {
+  height: 520px;
+  overflow-y: auto;
+  margin: 0 auto;
+}

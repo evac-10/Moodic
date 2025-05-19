@@ -1,0 +1,120 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1A2980, #26D0CE);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container for form with blurred background */
+.auth-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  width: 320px;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* space between inputs */
+}
+
+/* Heading */
+.auth-container h2 {
+  font-weight: 900;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Form inputs */
+.auth-container input[type="text"],
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1A2980;
+  transition: background 0.3s ease;
+}
+
+.auth-container input[type="text"]::placeholder,
+.auth-container input[type="email"]::placeholder,
+.auth-container input[type="password"]::placeholder {
+  color: #777;
+}
+
+.auth-container input[type="text"]:focus,
+.auth-container input[type="email"]:focus,
+.auth-container input[type="password"]:focus {
+  outline: none;
+  background: white;
+  box-shadow: 0 0 8px #26D0CE;
+}
+
+/* Submit button */
+.auth-container button {
+  width: 100%;
+  padding: 12px;
+  background: #2662d0;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px #1A2980;
+  transition: background 0.3s ease;
+}
+
+.auth-container button:hover {
+  background: #1A2980;
+  box-shadow: 0 4px 20px #010f3f;
+}
+
+/* Links */
+.auth-container p {
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  color: white;
+}
+
+.auth-container a {
+  color: #2645d0;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.auth-container a:hover {
+  color: #0a013f;
+}
+
+/* Error message styling */
+.error {
+  color: #ff6b6b;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.auth-container form input {
+  width: 100%; /* full width inside container */
+  max-width: 300px; /* limit max width */
+}
