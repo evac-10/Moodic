@@ -9,3 +9,5 @@ opencv-python-headless==4.5.5.64
 Pillow==9.1.1
 tensorflow==2.9.0
 gunicorn==20.1.0
+setuptools==59.5.0
+wheel==0.37.1
